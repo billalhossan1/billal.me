@@ -1,8 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Billal Hossan - Portfolio Website
 
-## Getting Started
+A modern, responsive portfolio website built with Next.js, TypeScript, and Tailwind CSS. This is a one-page portfolio showcasing my skills, projects, experience, and contact information.
 
-First, run the development server:
+## 🚀 Features
+
+- **Responsive Design**: Optimized for all device sizes (mobile, tablet, desktop)
+- **Smooth Scroll Navigation**: Sticky navigation bar with smooth scrolling to sections
+- **Modern UI/UX**: Clean, elegant design with gradient themes and animations
+- **Interactive Components**: Hover effects, progress bars, and animated elements
+- **Contact Form**: Functional contact form with validation
+- **SEO Optimized**: Proper meta tags and structured data
+- **TypeScript**: Type-safe development experience
+- **Tailwind CSS**: Utility-first CSS framework for rapid styling
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 15.5.3
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Development**: Turbopack for fast development
+- **Linting**: ESLint
+- **Deployment**: Vercel-ready
+
+## 📱 Sections
+
+1. **Hero Section**: Introduction with animated gradient background
+2. **About**: Personal information and brief introduction
+3. **Skills**: Technical skills with progress bars and categories
+4. **Experience**: Timeline-style experience showcase
+5. **Projects**: Grid layout of featured projects with tech stacks
+6. **Contact**: Contact form and social media links
+
+## 🏃‍♂️ Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- npm, yarn, pnpm, or bun
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/billalhossan/portfolio.git
+cd portfolio
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+# or
+bun install
+```
+
+3. Run the development server:
 
 ```bash
 npm run dev
@@ -14,21 +71,75 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🏗️ Project Structure
 
-## Learn More
+```
+src/
+├── app/
+│   ├── globals.css          # Global styles and custom animations
+│   ├── layout.tsx           # Root layout with metadata
+│   └── page.tsx            # Main page with all sections
+└── components/
+    ├── About.tsx           # About section component
+    ├── Contact.tsx         # Contact form and information
+    ├── Experience.tsx      # Experience timeline
+    ├── Hero.tsx            # Hero section with animations
+    ├── Navigation.tsx      # Sticky navigation bar
+    ├── Projects.tsx        # Projects grid
+    └── Skills.tsx          # Skills with progress bars
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 🎨 Customization
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+To customize the portfolio for your own use:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. **Personal Information**: Update personal details in each component
+2. **Projects**: Modify the projects array in `src/components/Projects.tsx`
+3. **Skills**: Update skills and levels in `src/components/Skills.tsx`
+4. **Experience**: Edit experience timeline in `src/components/Experience.tsx`
+5. **Colors**: Modify Tailwind classes for different color schemes
+6. **Content**: Update text content throughout the components
 
-## Deploy on Vercel
+## 🚀 Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Deploy on Vercel (Recommended)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Push your code to GitHub
+2. Connect your repository to [Vercel](https://vercel.com)
+3. Deploy with one click
+
+### Build for Production
+
+```bash
+npm run build
+npm start
+```
+
+## 📝 Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm start` - Start production server
+- `npm run lint` - Run ESLint
+
+## 🤝 Contributing
+
+Feel free to fork this project and customize it for your own portfolio. If you have suggestions for improvements, please open an issue or submit a pull request.
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## 📞 Contact
+
+**Billal Hossan**
+
+- Email: billal@example.com
+- GitHub: [@billalhossan](https://github.com/billalhossan)
+- LinkedIn: [billalhossan](https://linkedin.com/in/billalhossan)
+
+---
+
+Built with ❤️ using Next.js, TypeScript, and Tailwind CSS
