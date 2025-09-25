@@ -30,34 +30,51 @@ const Contact = () => {
     setSubmitStatus({ type: null, message: '' });
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+      // Create mailto link with pre-filled form data
+      const subject = `Portfolio Contact: Message from ${formData.name}`;
+      const body = `Hi Billal,
 
-      const data = await response.json();
+My name is ${formData.name} and I'm reaching out through your portfolio website.
 
-      if (response.ok) {
-        setSubmitStatus({
-          type: 'success',
-          message: 'Thank you! Your message has been sent successfully. I\'ll get back to you soon!'
-        });
-        setFormData({ name: "", email: "", message: "" });
-      } else {
-        setSubmitStatus({
-          type: 'error',
-          message: data.error || 'Something went wrong. Please try again.'
-        });
-      }
-    } catch (error) {
-      console.error('Error:', error);
+Contact Details:
+Name: ${formData.name}
+Email: ${formData.email}
+
+Message:
+${formData.message}
+
+Best regards,
+${formData.name}`;
+
+      const mailtoLink = `mailto:bh302333@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      
+      // Small delay to show loading state
+      await new Promise(resolve => setTimeout(resolve, 500));
+      
+      // Open email client
+      window.open(mailtoLink, '_blank');
+      
       setSubmitStatus({
-        type: 'error',
-        message: 'Network error. Please check your connection and try again.'
+        type: 'success',
+        message: 'Email client opened with your message! Please click send to complete. If it didn\'t open, please copy the message and email me directly at bh302333@gmail.com'
       });
+      
+      // Reset form after successful submission
+      setFormData({ name: "", email: "", message: "" });
+      
+    } catch (error) {
+      console.error('Error opening email client:', error);
+      setSubmitStatus({
+        type: 'success', // Still show success since mailto is a valid approach
+        message: `Please send this message directly to bh302333@gmail.com:
+
+Subject: Portfolio Contact: Message from ${formData.name}
+
+Name: ${formData.name}
+Email: ${formData.email}
+Message: ${formData.message}`
+      });
+      // Keep form data so user can copy the message
     } finally {
       setIsLoading(false);
     }
@@ -130,17 +147,17 @@ const Contact = () => {
                     ? 'bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 text-green-700 dark:text-green-300' 
                     : 'bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-300'
                 }`}>
-                  <div className="flex items-center">
+                  <div className="flex items-start">
                     {submitStatus.type === 'success' ? (
-                      <svg className="w-5 h-5 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                     ) : (
-                      <svg className="w-5 h-5 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-5 h-5 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                     )}
-                    <p className="text-sm font-medium">{submitStatus.message}</p>
+                    <p className="text-sm font-medium whitespace-pre-line">{submitStatus.message}</p>
                   </div>
                 </div>
               )}
@@ -151,7 +168,7 @@ const Contact = () => {
                     htmlFor="name"
                     className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
                   >
-                    Your Name
+                    Your Name *
                   </label>
                   <input
                     type="text"
@@ -160,7 +177,7 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 transform hover:scale-105"
+                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 transform hover:scale-[1.02]"
                     placeholder="Enter your name"
                   />
                 </div>
@@ -170,7 +187,7 @@ const Contact = () => {
                     htmlFor="email"
                     className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
                   >
-                    Your Email
+                    Your Email *
                   </label>
                   <input
                     type="email"
@@ -179,7 +196,7 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 transform hover:scale-105"
+                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 transform hover:scale-[1.02]"
                     placeholder="Enter your email"
                   />
                 </div>
@@ -189,7 +206,7 @@ const Contact = () => {
                     htmlFor="message"
                     className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
                   >
-                    Your Message
+                    Your Message *
                   </label>
                   <textarea
                     id="message"
@@ -198,8 +215,8 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     rows={5}
-                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-none transform hover:scale-105"
-                    placeholder="Enter your message"
+                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-none transform hover:scale-[1.02]"
+                    placeholder="Tell me about your project, ideas, or just say hello!"
                   ></textarea>
                 </div>
 
@@ -209,7 +226,7 @@ const Contact = () => {
                   className={`w-full px-6 py-3 font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center ${
                     isLoading 
                       ? 'bg-gray-400 cursor-not-allowed' 
-                      : 'bg-gradient-to-r from-blue-600 to-sky-500 text-white animate-pulse-slow'
+                      : 'bg-gradient-to-r from-blue-600 to-sky-500 text-white hover:from-blue-700 hover:to-sky-600'
                   }`}
                 >
                   {isLoading ? (
@@ -218,11 +235,11 @@ const Contact = () => {
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                       </svg>
-                      Sending Message...
+                      Opening Email Client...
                     </>
                   ) : (
                     <>
-                      Send Message
+                      📧 Send Message
                       <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                       </svg>
@@ -230,6 +247,13 @@ const Contact = () => {
                   )}
                 </button>
               </form>
+
+              {/* Info Box */}
+              <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg relative z-10">
+                <p className="text-sm text-blue-700 dark:text-blue-300 text-center">
+                  <strong>📬 How it works:</strong> This form opens your email client with a pre-written message. Just click send!
+                </p>
+              </div>
             </div>
           </AnimatedSection>
 
@@ -333,6 +357,21 @@ const Contact = () => {
                   <p className="text-gray-600 dark:text-gray-400">
                     Dhaka, Bangladesh
                   </p>
+                </div>
+              </div>
+
+              {/* Response Time */}
+              <div className="p-4 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-800 rounded-lg">
+                <div className="flex items-center space-x-3">
+                  <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                  <div>
+                    <h4 className="font-semibold text-gray-800 dark:text-white text-sm">
+                      Quick Response
+                    </h4>
+                    <p className="text-green-600 dark:text-green-400 text-xs">
+                      I typically respond within 24-48 hours
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>

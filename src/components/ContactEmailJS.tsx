@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { AnimatedSection } from "./AnimatedSection";
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -30,33 +31,64 @@ const Contact = () => {
     setSubmitStatus({ type: null, message: '' });
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      // EmailJS configuration
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'your_service_id_here';
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'your_template_id_here';
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'your_public_key_here';
+
+      // Check if EmailJS is configured (check against the actual placeholder values from .env.local)
+      if (serviceId === 'your_service_id_here' || templateId === 'your_template_id_here' || publicKey === 'your_public_key_here') {
+        // Fallback to mailto if EmailJS is not configured
+        const subject = `Portfolio Contact: Message from ${formData.name}`;
+        const body = `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`;
+        const mailtoLink = `mailto:bh302333@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        
+        // For better UX, try to open mailto and show success message
+        try {
+          window.open(mailtoLink);
+          setSubmitStatus({
+            type: 'success',
+            message: 'Email client opened! Please send the email to complete your message.'
+          });
+          setFormData({ name: "", email: "", message: "" });
+        } catch (mailtoError) {
+          // If mailto fails, show the direct email message
+          setSubmitStatus({
+            type: 'success',
+            message: `Please send your message directly to: bh302333@gmail.com\n\nYour message: "${formData.message}"`
+          });
+          setFormData({ name: "", email: "", message: "" });
+        }
+        return;
+      }
+
+      // Send email using EmailJS
+      const result = await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+          to_email: 'bh302333@gmail.com',
         },
-        body: JSON.stringify(formData),
-      });
+        publicKey
+      );
 
-      const data = await response.json();
-
-      if (response.ok) {
+      if (result.status === 200) {
         setSubmitStatus({
           type: 'success',
           message: 'Thank you! Your message has been sent successfully. I\'ll get back to you soon!'
         });
         setFormData({ name: "", email: "", message: "" });
       } else {
-        setSubmitStatus({
-          type: 'error',
-          message: data.error || 'Something went wrong. Please try again.'
-        });
+        throw new Error('Failed to send message');
       }
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Error sending email:', error);
       setSubmitStatus({
         type: 'error',
-        message: 'Network error. Please check your connection and try again.'
+        message: 'Failed to send message. Please try again or contact me directly at bh302333@gmail.com'
       });
     } finally {
       setIsLoading(false);
@@ -230,6 +262,13 @@ const Contact = () => {
                   )}
                 </button>
               </form>
+
+              {/* Setup Instructions */}
+              <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg relative z-10">
+                <p className="text-sm text-blue-700 dark:text-blue-300">
+                  <strong>💡 Pro Tip:</strong> For direct email delivery, set up EmailJS following the guide in EMAIL_SETUP.md
+                </p>
+              </div>
             </div>
           </AnimatedSection>
 
