@@ -1,6 +1,6 @@
 {
-  "name": "billal-magi",
-  "version": "0.1.1",
+  "name": "billal",
+  "version": "0.1.2",
   "private": true,
   "engines": {
     "node": ">=18.0.0"

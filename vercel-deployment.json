@@ -1,0 +1,7 @@
+{
+  "timestamp": "2025-09-25T00:00:00Z",
+  "version": "0.1.2",
+  "deployment": "fresh",
+  "reason": "Force Vercel redeployment",
+  "status": "ready"
+}
