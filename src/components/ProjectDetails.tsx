@@ -212,19 +212,102 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, isOpen, onClos
                     <section>
                       <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-4 flex items-center">
                         <span className="w-2 h-8 bg-gradient-to-b from-blue-600 to-sky-500 rounded-full mr-3"></span>
-                        Project Preview
+                        Project Screenshots
                       </h3>
-                      <div className="bg-gray-100 dark:bg-gray-800 rounded-xl p-8 text-center">
-                        <div className="w-full h-64 bg-gradient-to-br from-blue-100 to-sky-100 dark:from-gray-700 dark:to-gray-600 rounded-lg flex items-center justify-center mb-4">
-                          <div className="text-center">
-                            <svg className="w-16 h-16 text-blue-400 dark:text-blue-300 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                            </svg>
-                            <p className="text-gray-500 dark:text-gray-400">Project Screenshots</p>
-                            <p className="text-sm text-gray-400 dark:text-gray-500 mt-1">Coming Soon</p>
+                      {project.images && project.images.length > 0 ? (
+                        <div className="space-y-4">
+                          {/* Main Image Display */}
+                          <div className="relative">
+                            <div className="bg-gray-100 dark:bg-gray-800 rounded-xl overflow-hidden">
+                              <img
+                                src={project.images[activeImageIndex]}
+                                alt={`${project.title} screenshot ${activeImageIndex + 1}`}
+                                className="w-full h-80 object-cover"
+                                onError={(e) => {
+                                  const target = e.target as HTMLImageElement;
+                                  target.style.display = 'none';
+                                  target.nextElementSibling?.classList.remove('hidden');
+                                }}
+                              />
+                              {/* Fallback placeholder */}
+                              <div className="hidden w-full h-80 bg-gradient-to-br from-blue-100 to-sky-100 dark:from-gray-700 dark:to-gray-600 rounded-lg flex items-center justify-center">
+                                <div className="text-center">
+                                  <svg className="w-16 h-16 text-blue-400 dark:text-blue-300 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                  </svg>
+                                  <p className="text-gray-500 dark:text-gray-400">Loading Screenshot...</p>
+                                </div>
+                              </div>
+                            </div>
+                            
+                            {/* Navigation Arrows */}
+                            {project.images.length > 1 && (
+                              <>
+                                <button
+                                  onClick={() => setActiveImageIndex((prev) => 
+                                    prev === 0 ? project.images!.length - 1 : prev - 1
+                                  )}
+                                  className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all"
+                                >
+                                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                                  </svg>
+                                </button>
+                                <button
+                                  onClick={() => setActiveImageIndex((prev) => 
+                                    prev === project.images!.length - 1 ? 0 : prev + 1
+                                  )}
+                                  className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all"
+                                >
+                                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                  </svg>
+                                </button>
+                              </>
+                            )}
+
+                            {/* Image Counter */}
+                            <div className="absolute bottom-2 right-2 bg-black/50 text-white px-2 py-1 rounded text-sm">
+                              {activeImageIndex + 1} / {project.images.length}
+                            </div>
+                          </div>
+
+                          {/* Thumbnail Gallery */}
+                          {project.images.length > 1 && (
+                            <div className="flex gap-2 overflow-x-auto pb-2">
+                              {project.images.map((image, index) => (
+                                <button
+                                  key={index}
+                                  onClick={() => setActiveImageIndex(index)}
+                                  className={`flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 transition-all ${
+                                    activeImageIndex === index
+                                      ? 'border-blue-500 scale-105'
+                                      : 'border-gray-300 dark:border-gray-600 hover:border-blue-400'
+                                  }`}
+                                >
+                                  <img
+                                    src={image}
+                                    alt={`${project.title} thumbnail ${index + 1}`}
+                                    className="w-full h-full object-cover"
+                                  />
+                                </button>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      ) : (
+                        <div className="bg-gray-100 dark:bg-gray-800 rounded-xl p-8 text-center">
+                          <div className="w-full h-64 bg-gradient-to-br from-blue-100 to-sky-100 dark:from-gray-700 dark:to-gray-600 rounded-lg flex items-center justify-center mb-4">
+                            <div className="text-center">
+                              <svg className="w-16 h-16 text-blue-400 dark:text-blue-300 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                              </svg>
+                              <p className="text-gray-500 dark:text-gray-400">Project Screenshots</p>
+                              <p className="text-sm text-gray-400 dark:text-gray-500 mt-1">Coming Soon</p>
+                            </div>
                           </div>
                         </div>
-                      </div>
+                      )}
                     </section>
 
                     {/* Challenges & Solutions */}
