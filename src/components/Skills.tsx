@@ -183,23 +183,28 @@ const Skills = () => {
 
             {/* Enhanced Circular Layout */}
             <div className="relative flex items-center justify-center">
-              <div ref={techRef} className="relative w-96 h-96 mx-auto">
+              <div ref={techRef} className="tech-orbit">
                 {/* Outer decorative circle */}
-                <div className="absolute inset-0 border-2 border-dashed border-blue-300 dark:border-blue-600 rounded-full animate-spin-slower opacity-30"></div>
+                <div className="absolute inset-0 border-2 border-dashed border-blue-300 dark:border-blue-600 rounded-full animate-spin-slowest opacity-30"></div>
 
                 {/* Middle decorative circle */}
-                <div className="absolute inset-8 border border-sky-200 dark:border-sky-700 rounded-full animate-spin-slow opacity-40"></div>
-
+                <div className="absolute inset-8 border border-sky-200 dark:border-sky-700 rounded-full animate-spin-reverse opacity-40"></div>
+                
+                {/* Technologies in orbit */}
                 {techIcons.map((tech, index) => {
+                  // Calculate position on the circle
                   const angle = (360 / techIcons.length) * index;
-                  const radius = 140;
+                  const radius = 160; // Increased radius for more spacing
                   const x = Math.cos((angle * Math.PI) / 180) * radius;
                   const y = Math.sin((angle * Math.PI) / 180) * radius;
-
+                  
+                  // Alternate between two different orbit speeds
+                  const orbitClass = index % 2 === 0 ? 'animate-spin-slow' : 'animate-spin-slower';
+                  
                   return (
                     <div
                       key={tech.name}
-                      className={`absolute w-20 h-20 ${tech.rotation} ${
+                      className={`tech-orbit-item ${orbitClass} ${
                         techVisible
                           ? "opacity-100 scale-100"
                           : "opacity-0 scale-50"
@@ -212,7 +217,7 @@ const Skills = () => {
                       }}
                     >
                       <div
-                        className={`w-full h-full bg-gradient-to-br ${tech.color} rounded-full flex items-center justify-center text-3xl shadow-xl hover:shadow-2xl transform hover:scale-125 transition-all duration-300 border-4 border-white dark:border-gray-700 relative overflow-hidden group-hover:animate-bounce`}
+                        className={`w-full h-full bg-gradient-to-br ${tech.color} rounded-full flex items-center justify-center text-4xl shadow-xl hover:shadow-2xl transform hover:scale-125 transition-all duration-300 border-4 border-white dark:border-gray-700 relative overflow-hidden group-hover:animate-bounce`}
                       >
                         {/* Glowing effect */}
                         <div className="absolute inset-0 bg-white/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -225,7 +230,8 @@ const Skills = () => {
                         <div className="absolute inset-0 border-2 border-white rounded-full animate-ping opacity-0 group-hover:opacity-50"></div>
                       </div>
 
-                      <div className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 text-sm font-bold text-gray-700 dark:text-gray-300 whitespace-nowrap bg-white dark:bg-gray-800 px-3 py-1 rounded-full shadow-md border dark:border-gray-600 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+                      {/* Tech name label - now showing by default with improved spacing */}
+                      <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-sm font-bold tracking-wider text-gray-700 dark:text-gray-300 whitespace-nowrap bg-white/80 dark:bg-gray-800/80 px-3 py-1 rounded-full shadow-md border dark:border-gray-600 transition-all duration-300">
                         {tech.name}
                       </div>
                     </div>
@@ -234,14 +240,14 @@ const Skills = () => {
 
                 {/* Enhanced Center Circle */}
                 <div
-                  className={`absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-gradient-to-br from-blue-600 via-purple-600 to-sky-500 dark:from-blue-500 dark:via-purple-500 dark:to-sky-400 rounded-full flex items-center justify-center shadow-2xl ${
+                  className={`absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-28 h-28 bg-gradient-to-br from-blue-600 via-purple-600 to-sky-500 dark:from-blue-500 dark:via-purple-500 dark:to-sky-400 rounded-full flex items-center justify-center shadow-2xl ${
                     techVisible ? "animate-pulse-slow" : ""
                   } relative overflow-hidden`}
                 >
                   {/* Inner glow */}
                   <div className="absolute inset-2 bg-gradient-to-br from-blue-400 to-sky-300 rounded-full opacity-50 animate-spin-slow"></div>
 
-                  <span className="relative z-10 text-white text-3xl font-bold animate-bounce-slow">
+                  <span className="relative z-10 text-white text-4xl font-bold animate-bounce-slow">
                     ⚡
                   </span>
 

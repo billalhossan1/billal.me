@@ -92,6 +92,38 @@ body {
   animation: rotate 30s linear infinite;
 }
 
+/* Even slower spin for orbit circle */
+.animate-spin-slowest {
+  animation: rotate 45s linear infinite;
+}
+
+/* Counter rotation (reverse) */
+.animate-spin-reverse {
+  animation: rotate 25s linear infinite reverse;
+}
+
+/* Orbit parent container */
+.tech-orbit {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  margin: 0 auto;
+}
+
+/* Tech item positioning on orbit */
+.tech-orbit-item {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  transform-origin: center;
+  transition: all 0.3s ease;
+}
+
+/* Pauses animation on hover */
+.tech-orbit:hover .tech-orbit-item {
+  animation-play-state: paused;
+}
+
 @keyframes bounce-slow {
   0%,
   100% {

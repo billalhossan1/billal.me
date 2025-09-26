@@ -8,6 +8,7 @@ A modern, responsive portfolio website built with Next.js, TypeScript, and Tailw
 - **Smooth Scroll Navigation**: Sticky navigation bar with smooth scrolling to sections
 - **Modern UI/UX**: Clean, elegant design with gradient themes and animations
 - **Interactive Components**: Hover effects, progress bars, and animated elements
+- **Spinning Tech Orbit**: Interactive technology showcase with rotating skills in an orbit layout
 - **Contact Form**: Functional contact form with validation
 - **SEO Optimized**: Proper meta tags and structured data
 - **TypeScript**: Type-safe development experience
