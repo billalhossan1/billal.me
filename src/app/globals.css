@@ -105,18 +105,55 @@ body {
 /* Orbit parent container */
 .tech-orbit {
   position: relative;
-  width: 400px;
-  height: 400px;
+  width: 450px;
+  height: 450px;
   margin: 0 auto;
+  border-radius: 50%;
 }
 
 /* Tech item positioning on orbit */
 .tech-orbit-item {
   position: absolute;
-  width: 70px;
-  height: 70px;
-  transform-origin: center;
+  width: 60px;
+  height: 60px;
+  left: 50%;
+  top: 50%;
+  margin-left: -30px;
+  margin-top: -30px;
+  transform-origin: 50% 50%;
   transition: all 0.3s ease;
+  animation-duration: 30s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  z-index: 10;
+}
+
+/* Individual item orbits with specific delays for 16 items */
+.tech-orbit-item:nth-child(1) { animation-name: orbit; animation-delay: 0s; }
+.tech-orbit-item:nth-child(2) { animation-name: orbit; animation-delay: -1.875s; }
+.tech-orbit-item:nth-child(3) { animation-name: orbit; animation-delay: -3.75s; }
+.tech-orbit-item:nth-child(4) { animation-name: orbit; animation-delay: -5.625s; }
+.tech-orbit-item:nth-child(5) { animation-name: orbit; animation-delay: -7.5s; }
+.tech-orbit-item:nth-child(6) { animation-name: orbit; animation-delay: -9.375s; }
+.tech-orbit-item:nth-child(7) { animation-name: orbit; animation-delay: -11.25s; }
+.tech-orbit-item:nth-child(8) { animation-name: orbit; animation-delay: -13.125s; }
+.tech-orbit-item:nth-child(9) { animation-name: orbit; animation-delay: -15s; }
+.tech-orbit-item:nth-child(10) { animation-name: orbit; animation-delay: -16.875s; }
+.tech-orbit-item:nth-child(11) { animation-name: orbit; animation-delay: -18.75s; }
+.tech-orbit-item:nth-child(12) { animation-name: orbit; animation-delay: -20.625s; }
+.tech-orbit-item:nth-child(13) { animation-name: orbit; animation-delay: -22.5s; }
+.tech-orbit-item:nth-child(14) { animation-name: orbit; animation-delay: -24.375s; }
+.tech-orbit-item:nth-child(15) { animation-name: orbit; animation-delay: -26.25s; }
+.tech-orbit-item:nth-child(16) { animation-name: orbit; animation-delay: -28.125s; }
+
+/* Orbit animation for tech items - fixed to stay on circular path */
+@keyframes orbit {
+  0% {
+    transform: rotate(0deg) translateX(190px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translateX(190px) rotate(-360deg);
+  }
 }
 
 /* Pauses animation on hover */

@@ -50,49 +50,61 @@ const Skills = () => {
       name: "Flutter",
       emoji: "📱",
       color: "from-blue-500 to-cyan-400",
-      rotation: "animate-spin-slow",
     },
     {
       name: "Dart",
       emoji: "🎯",
       color: "from-blue-600 to-blue-400",
-      rotation: "animate-spin-slower",
     },
     {
       name: "C++",
       emoji: "⚡",
       color: "from-yellow-500 to-orange-400",
-      rotation: "animate-spin-slow",
     },
     {
       name: "Firebase",
       emoji: "🔥",
       color: "from-orange-500 to-red-400",
-      rotation: "animate-spin-slower",
     },
     {
       name: "Supabase",
       emoji: "🚀",
       color: "from-green-500 to-emerald-400",
-      rotation: "animate-spin-slow",
     },
     {
       name: "GitHub",
       emoji: "🐙",
       color: "from-gray-700 to-gray-500",
-      rotation: "animate-spin-slower",
     },
     {
       name: "Arduino",
       emoji: "🤖",
       color: "from-teal-500 to-cyan-400",
-      rotation: "animate-spin-slow",
     },
     {
       name: "VS Code",
       emoji: "💻",
       color: "from-blue-600 to-purple-500",
-      rotation: "animate-spin-slower",
+    },
+    {
+      name: "Git",
+      emoji: "🌿",
+      color: "from-red-500 to-orange-400",
+    },
+    {
+      name: "CI/CD",
+      emoji: "⚙️",
+      color: "from-purple-500 to-indigo-400",
+    },
+    {
+      name: "REST API",
+      emoji: "�",
+      color: "from-blue-400 to-cyan-300",
+    },
+    {
+      name: "TypeScript",
+      emoji: "📘",
+      color: "from-blue-600 to-blue-400",
     },
   ];
 
@@ -190,59 +202,11 @@ const Skills = () => {
                 {/* Middle decorative circle */}
                 <div className="absolute inset-8 border border-sky-200 dark:border-sky-700 rounded-full animate-spin-reverse opacity-40"></div>
                 
-                {/* Technologies in orbit */}
-                {techIcons.map((tech, index) => {
-                  // Calculate position on the circle
-                  const angle = (360 / techIcons.length) * index;
-                  const radius = 160; // Increased radius for more spacing
-                  const x = Math.cos((angle * Math.PI) / 180) * radius;
-                  const y = Math.sin((angle * Math.PI) / 180) * radius;
-                  
-                  // Alternate between two different orbit speeds
-                  const orbitClass = index % 2 === 0 ? 'animate-spin-slow' : 'animate-spin-slower';
-                  
-                  return (
-                    <div
-                      key={tech.name}
-                      className={`tech-orbit-item ${orbitClass} ${
-                        techVisible
-                          ? "opacity-100 scale-100"
-                          : "opacity-0 scale-50"
-                      } transition-all duration-1000 ease-out cursor-pointer group`}
-                      style={{
-                        left: `50%`,
-                        top: `50%`,
-                        transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
-                        transitionDelay: `${index * 150}ms`,
-                      }}
-                    >
-                      <div
-                        className={`w-full h-full bg-gradient-to-br ${tech.color} rounded-full flex items-center justify-center text-4xl shadow-xl hover:shadow-2xl transform hover:scale-125 transition-all duration-300 border-4 border-white dark:border-gray-700 relative overflow-hidden group-hover:animate-bounce`}
-                      >
-                        {/* Glowing effect */}
-                        <div className="absolute inset-0 bg-white/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-                        <span className="relative z-10 filter drop-shadow-lg">
-                          {tech.emoji}
-                        </span>
-
-                        {/* Ripple effect */}
-                        <div className="absolute inset-0 border-2 border-white rounded-full animate-ping opacity-0 group-hover:opacity-50"></div>
-                      </div>
-
-                      {/* Tech name label - now showing by default with improved spacing */}
-                      <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-sm font-bold tracking-wider text-gray-700 dark:text-gray-300 whitespace-nowrap bg-white/80 dark:bg-gray-800/80 px-3 py-1 rounded-full shadow-md border dark:border-gray-600 transition-all duration-300">
-                        {tech.name}
-                      </div>
-                    </div>
-                  );
-                })}
-
-                {/* Enhanced Center Circle */}
+                {/* Center Circle */}
                 <div
                   className={`absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-28 h-28 bg-gradient-to-br from-blue-600 via-purple-600 to-sky-500 dark:from-blue-500 dark:via-purple-500 dark:to-sky-400 rounded-full flex items-center justify-center shadow-2xl ${
                     techVisible ? "animate-pulse-slow" : ""
-                  } relative overflow-hidden`}
+                  } relative overflow-hidden z-30`}
                 >
                   {/* Inner glow */}
                   <div className="absolute inset-2 bg-gradient-to-br from-blue-400 to-sky-300 rounded-full opacity-50 animate-spin-slow"></div>
@@ -254,6 +218,38 @@ const Skills = () => {
                   {/* Pulsing ring */}
                   <div className="absolute inset-0 border-4 border-white/30 rounded-full animate-ping"></div>
                 </div>
+                
+                {/* Technologies in orbit */}
+                {techIcons.map((tech, index) => (
+                  <div
+                    key={tech.name}
+                    className={`tech-orbit-item ${
+                      techVisible
+                        ? "opacity-100 scale-100"
+                        : "opacity-0 scale-50"
+                    } transition-all duration-1000 ease-out cursor-pointer group`}
+                    style={{ transitionDelay: `${index * 150}ms` }}
+                  >
+                    <div
+                      className={`w-full h-full bg-gradient-to-br ${tech.color} rounded-full flex items-center justify-center text-4xl shadow-xl hover:shadow-2xl transform hover:scale-125 transition-all duration-300 border-4 border-white dark:border-gray-700 relative overflow-hidden group-hover:animate-bounce`}
+                    >
+                      {/* Glowing effect */}
+                      <div className="absolute inset-0 bg-white/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                      <span className="relative z-10 filter drop-shadow-lg">
+                        {tech.emoji}
+                      </span>
+
+                      {/* Ripple effect */}
+                      <div className="absolute inset-0 border-2 border-white rounded-full animate-ping opacity-0 group-hover:opacity-50"></div>
+                    </div>
+
+                    {/* Tech name label */}
+                    <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-sm font-bold tracking-wider text-gray-700 dark:text-gray-300 whitespace-nowrap bg-white/80 dark:bg-gray-800/80 px-3 py-1 rounded-full shadow-md border dark:border-gray-600 transition-all duration-300">
+                      {tech.name}
+                    </div>
+                  </div>
+                ))}
 
                 {/* Floating particles */}
                 <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-blue-400 rounded-full animate-float opacity-60"></div>
