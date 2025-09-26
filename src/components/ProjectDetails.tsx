@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 
 interface ProjectDetailsProps {
   project: {
@@ -219,15 +220,12 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, isOpen, onClos
                           {/* Main Image Display */}
                           <div className="relative">
                             <div className="bg-gray-100 dark:bg-gray-800 rounded-xl overflow-hidden">
-                              <img
+                              <Image
                                 src={project.images[activeImageIndex]}
                                 alt={`${project.title} screenshot ${activeImageIndex + 1}`}
+                                width={800}
+                                height={320}
                                 className="w-full h-80 object-cover"
-                                onError={(e) => {
-                                  const target = e.target as HTMLImageElement;
-                                  target.style.display = 'none';
-                                  target.nextElementSibling?.classList.remove('hidden');
-                                }}
                               />
                               {/* Fallback placeholder */}
                               <div className="hidden w-full h-80 bg-gradient-to-br from-blue-100 to-sky-100 dark:from-gray-700 dark:to-gray-600 rounded-lg flex items-center justify-center">
@@ -285,9 +283,11 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, isOpen, onClos
                                       : 'border-gray-300 dark:border-gray-600 hover:border-blue-400'
                                   }`}
                                 >
-                                  <img
+                                  <Image
                                     src={image}
                                     alt={`${project.title} thumbnail ${index + 1}`}
+                                    width={64}
+                                    height={64}
                                     className="w-full h-full object-cover"
                                   />
                                 </button>

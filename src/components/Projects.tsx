@@ -5,7 +5,24 @@ import { AnimatedSection } from "./AnimatedSection";
 import ProjectDetails from "./ProjectDetails";
 
 const Projects = () => {
-  const [selectedProject, setSelectedProject] = useState<any>(null);
+  const [selectedProject, setSelectedProject] = useState<{
+    id: number;
+    title: string;
+    description: string;
+    longDescription?: string;
+    techStack: string[];
+    features: string[];
+    challenges?: string[];
+    solutions?: string[];
+    achievements?: string[];
+    images?: string[];
+    githubLink: string;
+    demoLink: string;
+    type: string;
+    timeline?: string;
+    role?: string;
+    teamSize?: number;
+  } | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const projects = [

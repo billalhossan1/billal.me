@@ -51,7 +51,7 @@ const Contact = () => {
             message: 'Email client opened! Please send the email to complete your message.'
           });
           setFormData({ name: "", email: "", message: "" });
-        } catch (mailtoError) {
+        } catch {
           // If mailto fails, show the direct email message
           setSubmitStatus({
             type: 'success',
