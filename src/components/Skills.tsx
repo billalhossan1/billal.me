@@ -2,6 +2,7 @@
 
 import { AnimatedSection } from "./AnimatedSection";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import Image from "next/image";
 
 const Skills = () => {
   const { elementRef: skillsRef, isVisible: skillsVisible } =
@@ -48,32 +49,32 @@ const Skills = () => {
   const techIcons = [
     {
       name: "Flutter",
-      emoji: "📱",
+      image: "/skills/flutter.png",
       color: "from-blue-500 to-cyan-400",
     },
     {
       name: "Dart",
-      emoji: "🎯",
+      image: "/skills/dart.png",
       color: "from-blue-600 to-blue-400",
     },
     {
       name: "C++",
-      emoji: "⚡",
+      image: "/skills/c++.png",
       color: "from-yellow-500 to-orange-400",
     },
     {
       name: "Firebase",
-      emoji: "🔥",
+      image: "/skills/firebase.png",
       color: "from-orange-500 to-red-400",
     },
     {
       name: "Supabase",
-      emoji: "🚀",
+      image: "/skills/supabase.png",
       color: "from-green-500 to-emerald-400",
     },
     {
       name: "GitHub",
-      emoji: "🐙",
+      image: "/skills/github.png",
       color: "from-gray-700 to-gray-500",
     },
     {
@@ -83,7 +84,7 @@ const Skills = () => {
     },
     {
       name: "VS Code",
-      emoji: "💻",
+      image: "/skills/vs code.png",
       color: "from-blue-600 to-purple-500",
     },
     {
@@ -98,13 +99,33 @@ const Skills = () => {
     },
     {
       name: "REST API",
-      emoji: "�",
+      image: "/skills/rest_api.png",
       color: "from-blue-400 to-cyan-300",
     },
     {
       name: "TypeScript",
-      emoji: "📘",
+      image: "/skills/type_script.png",
       color: "from-blue-600 to-blue-400",
+    },
+    {
+      name: "Node.js",
+      emoji: "📗",
+      color: "from-green-600 to-green-400",
+    },
+    {
+      name: "MongoDB",
+      emoji: "🍃",
+      color: "from-green-500 to-green-300",
+    },
+    {
+      name: "Next.js",
+      emoji: "⚫",
+      color: "from-gray-800 to-gray-600",
+    },
+    {
+      name: "Docker",
+      emoji: "�",
+      color: "from-blue-500 to-blue-300",
     },
   ];
 
@@ -236,9 +257,19 @@ const Skills = () => {
                       {/* Glowing effect */}
                       <div className="absolute inset-0 bg-white/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
-                      <span className="relative z-10 filter drop-shadow-lg">
-                        {tech.emoji}
-                      </span>
+                      {tech.image ? (
+                        <Image
+                          src={tech.image}
+                          alt={tech.name}
+                          width={40}
+                          height={40}
+                          className="relative z-10 filter drop-shadow-lg"
+                        />
+                      ) : (
+                        <span className="relative z-10 filter drop-shadow-lg text-4xl">
+                          {tech.emoji}
+                        </span>
+                      )}
 
                       {/* Ripple effect */}
                       <div className="absolute inset-0 border-2 border-white rounded-full animate-ping opacity-0 group-hover:opacity-50"></div>
