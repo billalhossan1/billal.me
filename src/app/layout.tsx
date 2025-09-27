@@ -38,7 +38,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className="antialiased">
+      <body className="antialiased bg-gradient-to-br from-gray-900 via-black to-blue-900 min-h-screen">
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>

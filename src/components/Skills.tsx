@@ -255,7 +255,7 @@ const Skills = () => {
                       className={`w-full h-full bg-gradient-to-br ${tech.color} rounded-full flex items-center justify-center text-4xl shadow-xl hover:shadow-2xl transform hover:scale-125 transition-all duration-300 border-2 border-sky-400/20 hover:border-sky-300/50 relative overflow-hidden group-hover:animate-bounce`}
                     >
                       {/* Glowing effect */}
-                      <div className="absolute inset-0 bg-white/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <div className="absolute inset-0 bg-sky-500/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
                       {tech.image ? (
                         <Image

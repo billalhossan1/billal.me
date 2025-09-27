@@ -30,30 +30,30 @@ const Hero = () => {
       className="min-h-screen flex items-center justify-center relative overflow-hidden"
     >
       {/* Enhanced Gradient Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-sky-50 to-indigo-50 dark:from-gray-900 dark:via-blue-900/20 dark:to-purple-900/20"></div>
-      <div className="absolute inset-0 bg-gradient-to-tr from-blue-100/30 via-transparent to-purple-100/30 dark:from-blue-900/20 dark:via-transparent dark:to-purple-900/20"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-blue-900"></div>
+      <div className="absolute inset-0 bg-gradient-to-tr from-blue-900/30 via-transparent to-sky-900/30"></div>
 
       {/* Enhanced Animated Background Elements */}
-      <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-gradient-to-r from-blue-200/40 to-sky-200/40 dark:from-blue-500/20 dark:to-sky-500/20 rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-gradient-to-r from-sky-400/20 to-sky-500/20 rounded-full blur-3xl animate-pulse"></div>
       <div
-        className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-sky-200/40 to-purple-200/40 dark:from-sky-500/20 dark:to-purple-500/20 rounded-full blur-3xl animate-pulse"
+        className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-blue-500/20 to-sky-600/20 rounded-full blur-3xl animate-pulse"
         style={{ animationDelay: "1s" }}
       ></div>
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-purple-200/30 to-blue-200/30 dark:from-purple-500/15 dark:to-blue-500/15 rounded-full blur-2xl animate-spin-slower"></div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-sky-500/20 to-blue-500/20 rounded-full blur-2xl animate-spin-slower"></div>
 
       {/* Enhanced Floating Elements */}
-      <div className="absolute top-20 right-20 w-16 h-16 bg-gradient-to-r from-blue-400 to-sky-400 rounded-full opacity-30 animate-float shadow-lg"></div>
+      <div className="absolute top-20 right-20 w-16 h-16 bg-gradient-to-r from-sky-400 to-sky-500 rounded-full opacity-30 animate-float shadow-lg"></div>
       <div
-        className="absolute bottom-20 left-20 w-20 h-20 bg-gradient-to-r from-sky-400 to-purple-400 rounded-full opacity-30 animate-float shadow-lg"
+        className="absolute bottom-20 left-20 w-20 h-20 bg-gradient-to-r from-blue-400 to-sky-500 rounded-full opacity-30 animate-float shadow-lg"
         style={{ animationDelay: "2s" }}
       ></div>
-      <div className="absolute top-1/2 right-10 w-12 h-12 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full opacity-40 animate-bounce-slow shadow-lg"></div>
-      <div className="absolute top-32 left-32 w-8 h-8 bg-gradient-to-r from-indigo-400 to-blue-400 rounded-full opacity-50 animate-pulse-slow"></div>
-      <div className="absolute bottom-32 right-32 w-10 h-10 bg-gradient-to-r from-cyan-400 to-teal-400 rounded-full opacity-40 animate-spin-slow"></div>
+      <div className="absolute top-1/2 right-10 w-12 h-12 bg-gradient-to-r from-sky-500 to-sky-600 rounded-full opacity-40 animate-bounce-slow shadow-lg"></div>
+      <div className="absolute top-32 left-32 w-8 h-8 bg-gradient-to-r from-blue-400 to-blue-500 rounded-full opacity-50 animate-pulse-slow"></div>
+      <div className="absolute bottom-32 right-32 w-10 h-10 bg-gradient-to-r from-sky-400 to-sky-500 rounded-full opacity-40 animate-spin-slow"></div>
 
       {/* Geometric Patterns */}
-      <div className="absolute top-1/3 left-10 w-16 h-16 border-2 border-blue-300/30 dark:border-blue-600/30 rotate-45 animate-spin-slower"></div>
-      <div className="absolute bottom-1/3 right-10 w-12 h-12 border-2 border-sky-300/30 dark:border-sky-600/30 rotate-12 animate-bounce-slow"></div>
+      <div className="absolute top-1/3 left-10 w-16 h-16 border-2 border-sky-400/30 rotate-45 animate-spin-slower"></div>
+      <div className="absolute bottom-1/3 right-10 w-12 h-12 border-2 border-sky-500/30 rotate-12 animate-bounce-slow"></div>
 
       <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
         <div className="space-y-8">

@@ -96,15 +96,15 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="py-20 bg-white dark:bg-gray-900 transition-colors duration-300 relative overflow-hidden"
+      className="py-20 bg-gradient-to-br from-gray-900 via-black to-blue-900 transition-colors duration-300 relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <AnimatedSection>
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-sky-500 bg-clip-text text-transparent mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-sky-400 to-sky-300 bg-clip-text text-transparent mb-4">
               Get In Touch
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-sky-500 mx-auto mb-6"></div>
+            <div className="w-24 h-1 bg-gradient-to-r from-sky-400 to-sky-300 mx-auto mb-6"></div>
             <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
               I&apos;m always open to discussing new opportunities, interesting
               projects, or just having a chat about technology.
@@ -115,11 +115,11 @@ const Contact = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Contact Form */}
           <AnimatedSection animation="slide-in-left" delay={0.2}>
-            <div className="bg-gradient-to-br from-blue-50 to-sky-50 dark:from-gray-800 dark:to-gray-700 p-8 rounded-xl shadow-lg dark:shadow-xl hover:shadow-xl dark:hover:shadow-2xl transition-all duration-300 relative overflow-hidden group">
+            <div className="bg-gradient-to-br from-sky-900/30 to-blue-900/30 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group border border-sky-500/20 backdrop-blur-sm">
               {/* Animated background gradient */}
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-sky-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-sky-500/10 to-sky-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
-              <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-6 relative z-10">
+              <h3 className="text-2xl font-bold text-sky-200 mb-6 relative z-10">
                 Send me a message
               </h3>
 
@@ -160,7 +160,7 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 transform hover:scale-105"
+                    className="w-full px-4 py-3 border border-sky-500/30 bg-sky-900/20 text-sky-200 placeholder-sky-400 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-400 transition-all duration-300 transform hover:scale-105 backdrop-blur-sm"
                     placeholder="Enter your name"
                   />
                 </div>
@@ -179,7 +179,7 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 transform hover:scale-105"
+                    className="w-full px-4 py-3 border border-sky-500/30 bg-sky-900/20 text-sky-200 placeholder-sky-400 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-400 transition-all duration-300 transform hover:scale-105 backdrop-blur-sm"
                     placeholder="Enter your email"
                   />
                 </div>
@@ -198,7 +198,7 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     rows={5}
-                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-none transform hover:scale-105"
+                    className="w-full px-4 py-3 border border-sky-500/30 bg-sky-900/20 text-sky-200 placeholder-sky-400 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-400 transition-all duration-300 resize-none transform hover:scale-105 backdrop-blur-sm"
                     placeholder="Enter your message"
                   ></textarea>
                 </div>
@@ -237,7 +237,7 @@ const Contact = () => {
           <AnimatedSection animation="slide-in-right" delay={0.4}>
             <div className="space-y-8">
               <div>
-                <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">
+                <h3 className="text-2xl font-bold text-sky-200 mb-6">
                   Let&apos;s connect
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
@@ -270,7 +270,7 @@ const Contact = () => {
                   </div>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-800 dark:text-white">
+                  <h4 className="font-semibold text-sky-200">
                     Email
                   </h4>
                   <p className="text-blue-600 dark:text-blue-400 hover:underline">
@@ -281,7 +281,7 @@ const Contact = () => {
 
               {/* Social Media */}
               <div>
-                <h4 className="text-lg font-semibold text-gray-800 dark:text-white mb-4">
+                <h4 className="text-lg font-semibold text-sky-200 mb-4">
                   Follow me on
                 </h4>
                 <div className="flex space-x-4">
@@ -327,7 +327,7 @@ const Contact = () => {
                   </div>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-800 dark:text-white">
+                  <h4 className="font-semibold text-sky-200">
                     Location
                   </h4>
                   <p className="text-gray-600 dark:text-gray-400">
