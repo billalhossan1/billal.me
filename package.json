@@ -6,16 +6,16 @@
     "node": "22.x"
   },
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "node api.js && next dev",
+    "build": "node api.js && next build",
+    "start": "node api.js && next start",
     "lint": "next lint"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "@types/nodemailer": "^7.0.1",
     "framer-motion": "^12.23.19",
-    "next": "15.5.3",
+    "next": "15.5.9",
     "nodemailer": "^7.0.6",
     "react": "19.1.0",
     "react-dom": "19.1.0"
